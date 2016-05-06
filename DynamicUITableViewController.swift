@@ -46,12 +46,12 @@ class DynamicUITableViewController: UITableViewController  {
     
     // Hide section headers
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return shouldHideSection(section) ? 0.01 : -1
+        return shouldHideSection(section) ? 0.01 : super.tableView(tableView, heightForHeaderInSection: section)
     }
     
     // Hide section footers
     override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return shouldHideSection(section) ? 0.01 : -1
+        return shouldHideSection(section) ? 0.01 : super.tableView(tableView, heightForFooterInSection: section)
     }
     
     // Hide rows
@@ -62,7 +62,7 @@ class DynamicUITableViewController: UITableViewController  {
         if shouldHideRow(indexPath.section, row: indexPath.row) {
             return 0
         }
-        return -1
+        return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
     }
     
     // Hide header text by making it clear.
